@@ -12,5 +12,5 @@ typedef struct annee{
 int max(int a, int b);
 
 Annee initialiser_tableau
-
+oo
 #endif
