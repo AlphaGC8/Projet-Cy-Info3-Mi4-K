@@ -1,41 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX_ANNEE 20
 
-typedef struct annee{
-	int nmbaccident;
-	int indemne;
-	int tue;
-	int blessegrave;
-	int blesseleger;
-} Annee;
+#include "../include/year_data.h"
 
-int max(int a, int b) {
-	if (a>b) {
-		return a;
-	}
-	else {
-		return b;
-	}
-}
-
-
-int main() {
-	Annee tab[20];
-	for(int i =0, i<20, i++) {
+Annee initialiser_tableau(){
+	for(int i =0; i<20; i++){
 		tab[i].nmbaccident = 0;
 		tab[i].indemne = 0;
 		tab[i].tue = 0;
 		tab[i].blessegrave = 0;
 		tab[i].blesseleger = 0;
 	}
-	
-	char tmp[1000];
-	fgets(tmp,999, f);
-	
-	int tmp2 = 0;
-	int year = 0;
-	int blesse = 0;
-	int idmax = 0;
+}
+
+Annee charger_tableau(Annee tab[], FILE *f){
+    int tmp2;
+	int year;
+	int blesse;
+	int idmax;
 	
 	while(fscanf(f, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &year, &idmax, &tmp2, &tmp2, &tmp2, &blesse, &tmp2, &tmp2, &tmp2)==9) {
 	
@@ -54,5 +37,26 @@ int main() {
 			tab[year-2005].blesseleger++;
 		}
 		
-	return 0;
+    }
+    return tab[];
+}
+
+
+
+int max(int a, int b) {
+	if (a>b) return a;
+	else return b;
+}
+
+
+int main(int argc, char ** argv){
+    FILE * f = fopen(argv[1], "r");
+	Annee tab[MAX_ANNEE];
+
+	char tmp[1000];
+	fgets(tmp,999, f);
+	
+
+    fclose(f);
+    return 0;
 }
