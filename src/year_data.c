@@ -51,6 +51,7 @@ int actionMenu(Annee tab[]) {
 		printf("Voulez-vous connaitre les statistiques d'une annee ? (o pour oui, n pour non)\n");
 		if ((scanf(" %s", rsp)!=1) || (strlen(rsp)!=1) || ((rsp[0] != 'o' && rsp[0] != 'n'))) {
 				printf("erreur, veuillez reessayer\n");
+				vide_buffer();
 		}
 	} while ((strlen(rsp)!=1) || (rsp[0] != 'o' && rsp[0] != 'n'));
 	
@@ -61,6 +62,7 @@ int actionMenu(Annee tab[]) {
 			printf("De quelle annee souhaitez-vous avoir les statistiques ? (entre 2005 et 2024)\n");
 			if ((scanf(" %d", &year)!=1) || year>2024 || year<2005) {
 				printf("erreur, veuillez reessayer\n");
+				vide_buffer();
 			}
 		} while (year>2024 || year<2005);
 		afficherTableau(year, tab);
@@ -88,6 +90,10 @@ void afficherTableau(int year, Annee tab[]) {
 	printf("En %d, il y a eu : \n %d accident\n %d personnes indemnes lors d'un accident\n %d personnes tuees\n %d personnes blessees gravement\n %d personnes blesses legerement\n", year, tab[year-2005].nmbaccident, tab[year-2005].indemne, tab[year-2005].tue, tab[year-2005].blessegrave, tab[year-2005].blesseleger);
 }
 
+
+void vide_buffer(void){
+	while(getchar()!= '\n');
+}
 
 
 

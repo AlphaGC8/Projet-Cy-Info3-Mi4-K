@@ -19,5 +19,6 @@ void charger_tableau(Annee tab[], FILE *f);
 int actionMenu(Annee tab[]);
 void menu(Annee tab[]);
 void afficherTableau(int year, Annee tab[]);
+void vide_buffer();
 
 #endif
