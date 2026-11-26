@@ -29,12 +29,12 @@ PChainon chargerChainon(PChainon tete, FILE * f){
       int genre;
       int naissance;
       int tmp2;
-      int* n;
+      int n;
 
       while(fscanf(f, "%d;%d;%d;%d;%d;%d;%d;%d;%d", &annee, &tmp2, &tmp2, &tmp2, &role, &tmp2, &genre, &naissance, &tmp2)==9){
             if((genre == 1 || genre == 2) && (role >=1 && role <= 3) && (naissance > 0 && naissance <= annee)){
                   int age = annee - naissance;
-                  PChainon p = rechercherChainon(tete, age, n);
+                  PChainon p = rechercherChainon(tete, age, &n);
 
                         if(n == 0){
                               PChainon nouv = creerChainon(age);
@@ -75,13 +75,13 @@ PChainon rechercherChainon(PChainon tete, int age, int* n){
       return NULL;
 }
 
-float pourcentage(){
-
+float pourcentage(int partie, int total){
+      return ((float) partie / total)*100;
 }
 
-void afficherChainon(PChainon tete,int flitre1, int filtre2){
+void afficherChainon(PChainon tete, int flitre1, int filtre2){
       
-      printf("Pour %d an(s) :\n");
+      printf("Pour %d an(s) :\n", tete);
       printf(" - ");
       
 }
